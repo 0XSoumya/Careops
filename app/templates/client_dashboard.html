@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block page_title %}Client Portal{% endblock %}
+
+{% block content %}
+
+<div style="max-width:1000px;margin:auto;">
+
+<h1 style="margin-bottom:30px;">Client Portal</h1>
+
+<div class="dashboard-grid">
+
+<div class="card">
+<h3>Submit Query</h3>
+<form method="post" action="/client/query">
+<input name="name" placeholder="Name" required>
+<input name="phone" placeholder="Phone" required>
+<textarea name="message" placeholder="Your message" required></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+
+<div class="card">
+<h3>Book Service</h3>
+<form method="post" action="/client/booking">
+<input name="name" placeholder="Name" required>
+<input name="phone" placeholder="Phone" required>
+<input name="service_type" placeholder="Service Type">
+<input type="date" name="date" required>
+<input type="time" name="time" required>
+<button type="submit">Book</button>
+</form>
+</div>
+
+<div class="card">
+<h3>Leave Feedback</h3>
+<form method="post" action="/client/feedback">
+<input name="name" placeholder="Name">
+<input name="phone" placeholder="Phone" required>
+<input type="number" name="rating" min="1" max="5" required>
+<textarea name="feedback" placeholder="Your feedback" required></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

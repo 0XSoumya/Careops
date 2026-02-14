@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_title %}Staff Management{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Staff Members</h2>
+
+    {% for staff in staff_members %}
+        <p>{{ staff.name }} ({{ staff.username }})</p>
+    {% endfor %}
+</div>
+
+<br>
+
+<div class="card">
+    <h3>Add Staff Member</h3>
+
+    <form method="post" action="/owner/staff/add">
+        <div>
+            <label>Name</label>
+            <input name="name" required>
+        </div>
+
+        <div>
+            <label>Username</label>
+            <input name="username" required>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button type="submit">Create Staff</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block page_title %}Inventory Management{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Inventory</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Threshold</th>
+                <th>Status</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.threshold }}</td>
+
+                <td>
+                    {% if item.quantity <= item.threshold %}
+                        <span class="badge badge-danger">Low</span>
+                    {% else %}
+                        <span class="badge badge-success">OK</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    <form method="post" action="/owner/inventory/update">
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <input type="number" name="quantity" required>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h3>Add New Item</h3>
+
+    <form method="post" action="/owner/inventory/add">
+
+        <div>
+            <label>Name</label>
+            <input name="name" required>
+        </div>
+
+        <div>
+            <label>Quantity</label>
+            <input type="number" name="quantity" required>
+        </div>
+
+        <div>
+            <label>Threshold</label>
+            <input type="number" name="threshold" required>
+        </div>
+
+        <button type="submit">Add Item</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

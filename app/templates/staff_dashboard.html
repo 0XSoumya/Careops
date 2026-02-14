@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block page_title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-grid">
+
+    <div class="stat-card">
+        <h4>Open Conversations</h4>
+        <div class="stat-number">{{ open_conversations }}</div>
+        <a href="/staff/inbox">View Inbox</a>
+    </div>
+
+    <div class="stat-card">
+        <h4>Confirmed Bookings</h4>
+        <div class="stat-number">{{ confirmed_bookings }}</div>
+    </div>
+
+</div>
+
+<div class="card">
+    <h3>Inventory Update</h3>
+    {% for item in inventory_items %}
+    <form method="post" action="/staff/inventory/update" style="margin-bottom:15px;">
+        <input type="hidden" name="item_id" value="{{ item.id }}">
+        <strong>{{ item.name }}</strong>
+        <input type="number" name="quantity" value="{{ item.quantity }}" required>
+        <button type="submit">Update</button>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

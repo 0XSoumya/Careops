@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block page_title %}Business Onboarding{% endblock %}
+
+{% block content %}
+
+<div class="card" style="max-width:700px; margin:auto;">
+
+    <h2>Setup Your Business</h2>
+    <p>Configure your workspace and owner account.</p>
+
+    <form method="post" action="/onboarding">
+
+        <div>
+            <label>Business Name</label>
+            <input name="business_name" required>
+        </div>
+
+        <div>
+            <label>Address Line</label>
+            <input name="address_line" required>
+        </div>
+
+        <div>
+            <label>City</label>
+            <input name="city" required>
+        </div>
+
+        <div>
+            <label>State</label>
+            <input name="state" required>
+        </div>
+
+        <div>
+            <label>Postal Code</label>
+            <input name="postal_code" required>
+        </div>
+
+        <div>
+            <label>Timezone</label>
+            <input name="timezone" placeholder="Asia/Kolkata" required>
+        </div>
+
+        <div>
+            <label>Active Days</label>
+            <input name="active_days" placeholder="Mon,Tue,Wed,Thu,Fri" required>
+        </div>
+
+        <div>
+            <label>Start Time</label>
+            <input name="active_hours_start" placeholder="09:00" required>
+        </div>
+
+        <div>
+            <label>End Time</label>
+            <input name="active_hours_end" placeholder="18:00" required>
+        </div>
+
+        <div>
+            <label>Default Service Duration (minutes)</label>
+            <input type="number" name="default_service_duration_minutes" required>
+        </div>
+
+        <hr>
+
+        <h3>Owner Account</h3>
+
+        <div>
+            <label>Your Name</label>
+            <input name="name" required>
+        </div>
+
+        <div>
+            <label>Username</label>
+            <input name="username" required>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button type="submit">Create Workspace</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
